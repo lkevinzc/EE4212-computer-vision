@@ -1,0 +1,43 @@
+\begin{questions}
+\question{
+  Formulate and prove DeMorgan's laws for arbitrary unions and intersections
+}
+
+\begin{solution}
+\begin{proof}
+  DeMorgan's laws for arbitrary unions can be stated as follows:
+  \[ A - \union{b \in B}{b} = \inter{b \in B}{(A - b)} \]
+  \[ A - \inter{b \in B}{b} = \union{b \in B}{(A - b)} \]
+
+  Consider an arbitrary $x \in A$. By the definition of a complement, $x \in A - \inter{b \in B}{b}$ if and only if $x \notin \union{b \in B}{b}$. From there the proof follows by unfolding the definition of a union and letting quantifiers propagate out.
+  \begin{align*}
+    x \in A \wedge x \notin \union{b \in B}{b}
+    &= x \in A \wedge \forall b \in B,\ x \notin b \\
+    &= \forall b \in B,\ x \in A \wedge x \notin b \\
+    &= \forall b \in B,\ x \in A - b \\
+    &= x \in \inter{b \in B}{(A - b)} \qedhere
+  \end{align*}
+
+  The second proof is omitted, as it's essentially identical to the first
+\end{proof}
+\end{solution}
+
+\question{
+  Prove that $\mathcal{P}(\mathbb{N})$ and $\mathbb{R}$ have the same cardinality
+}
+
+\begin{solution}
+\begin{proof}
+  Instead of giving a bijection directly we will put both $\mathcal{P}(\mathbb{N})$ and $\mathbb{R}$ in bijection with $2^{\mathbb{N}}$.
+
+  First we'll handle $\mathcal{P}(\mathbb{N})$. For any subset $S$ of $\mathbb{N}$, we give the function
+  \[ f(x) = \begin{cases}
+    1 & :\ x \in S \\
+    0 & :\ x \notin S
+  \end{cases} \]
+  Which has as inverse the function $g(f) = \{ n\ |\ n \in \mathbb{N}, \ f(n) = 1 \}$.
+
+  For the bijection between $2^{\mathbb{N}}$ and $[0,1)$, we'll make use of the fact that any $r \in [0,1)$ can be written as an infinite binary expansion, $0.r_0r_1r_2$. We can thereby write any real number $r$ as a function $f : \mathbb{N} \to 2$ by taking $f(n) = r_n$. We can go in the other direction by taking $r_n = f(n)$.
+\end{proof}
+\end{solution}
+\end{questions}
